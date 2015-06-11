@@ -10,6 +10,10 @@ module Resources
       @name = options.fetch(:name, 'resources')
     end
 
+    def clear
+      redis.del(pool_key, values_key)
+    end
+
     def push(key, value)
       dlm.lock(item_key(key), 1000) do |locked|
         if locked
