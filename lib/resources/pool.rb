@@ -12,6 +12,7 @@ module Resources
 
     def clear
       redis.del(pool_key, values_key)
+      redis.del(*redis.keys(item_key '*'))
     end
 
     def push(key, value)
