@@ -2,19 +2,21 @@ module Resources
   class Lock
     attr_reader :info
     attr_reader :expiration
-    attr_reader :resource
+    attr_reader :key, :value
 
-    def initialize(info, resource)
+    def initialize(info, key, value)
+      @key = key
+      @value = value
       @info = info
+
       @expiration = Time.now + (validity.to_f / 1000.0)
-      @resource = resource
     end
 
     def validity
       info[:validity]
     end
 
-    def resource_key
+    def lock_key
       info[:resource]
     end
 

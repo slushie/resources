@@ -33,12 +33,12 @@ module Resources
       return unless lock_info
 
       value = redis.hget(values_key, key)
-      Lock.new(lock_info, {key: key, value: value})
+      Lock.new(lock_info, key, value)
     end
 
     def update(lock, value)
       raise "Lock expired" if lock.expired?
-      redis.hset(values_key, lock.resource[:key], lock.resource[:value] = value)
+      redis.hset(values_key, lock.key, lock.value = value)
     end
 
     def release(lock)
