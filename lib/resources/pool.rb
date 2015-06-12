@@ -6,7 +6,7 @@ module Resources
 
     def initialize(options)
       @redis = options.fetch(:redis)
-      @dlm = Redlock::Client.new(servers: [redis])
+      @dlm = Redlock::Client.new([redis])
       @name = options.fetch(:name, 'resources')
     end
 
