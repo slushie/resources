@@ -1,5 +1,5 @@
 require 'redis'
-require 'redblock'
+require 'redlock'
 
 require "resources/version"
 require 'resources/lock'
