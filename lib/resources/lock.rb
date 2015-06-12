@@ -2,7 +2,9 @@ module Resources
   class Lock
     attr_reader :info
     attr_reader :expiration
-    attr_reader :key, :value
+    
+    attr_reader :key
+    attr_accessor :value
 
     def initialize(info, key, value)
       @key = key
