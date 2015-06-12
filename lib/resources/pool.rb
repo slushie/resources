@@ -26,7 +26,7 @@ module Resources
     end
 
     def acquire(duration)
-      key = redis.srandmember(pool_key).first
+      key = redis.srandmember(pool_key)
       return unless key
 
       lock_info = dlm.lock(item_lock_key(key), duration)
